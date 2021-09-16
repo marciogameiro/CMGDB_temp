@@ -31,6 +31,7 @@ find_package(Boost CONFIG)
 # endif()
 
 message("BOOST_ROOT IS ${BOOST_ROOT}")
+message("BOOST_ROOT IS $ENV{BOOST_ROOT}")
 
 include_directories (
   /usr/local/include
