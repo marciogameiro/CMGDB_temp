@@ -17,7 +17,7 @@ endif(APPLE)
 
 add_subdirectory(pybind11)
 
-# set(Boost_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/boost)
+set(Boost_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/boost/boost)
 set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/boost/boost)
 
 find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
