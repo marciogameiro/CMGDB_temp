@@ -54,7 +54,8 @@ jobs:
 
       - name: Set environment variable(s)
         run: |
-          echo "BOOST_ROOT=${{ steps.install-boost.outputs.BOOST_ROOT }}" >> $GITHUB_ENV
+          echo "::set-env name=BOOST_ROOT::${{ steps.install-boost.outputs.BOOST_ROOT }}"
+          echo "::set-env name=Boost_INCLUDE_DIR::${{ steps.install-boost.outputs.BOOST_ROOT }}/include"
         shell: bash
 
       - name: Checkout repository and submodules
