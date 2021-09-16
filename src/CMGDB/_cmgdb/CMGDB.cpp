@@ -24,7 +24,7 @@
 
 #include "Configuration.h"
 
-#include "libgp/libgp.hpp"
+// #include "libgp/libgp.hpp"
 
 #include <boost/serialization/export.hpp>
 #include "SuccinctGrid.h"

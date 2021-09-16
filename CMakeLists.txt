@@ -1,29 +1,35 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.12)
 
 project(CMGDB)
+
+cmake_policy(SET CMP0054 NEW)
+
+# Visual Studio C++ does not support keywords such
+# as "and", "not", etc. Settting the /permissive-
+# flag for the compiler makes it suppor them.
+if(MSVC)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /permissive-")
+endif()
 
 if(APPLE)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
 endif(APPLE)
 
-add_subdirectory(lib/pybind11)
+add_subdirectory(pybind11)
 
 find_package(Boost REQUIRED COMPONENTS chrono thread serialization)
-find_package (Eigen3 REQUIRED NO_MODULE)
 
 include_directories (
+  ${CMAKE_SOURCE_DIR}/include
   /usr/local/include
-  /usr/include
-  /opt/local/include
-  ${HOME}/.local/include
   ${USER_INCLUDE_PATH}/database
   ${USER_INCLUDE_PATH} )
 
 link_directories (
   /usr/local/lib
-  /usr/lib
-  ${HOME}/.local/lib
   ${USER_LIBRARY_PATH} )
+
+message("USER INCLUDE PATH IS ${USER_INCLUDE_PATH}")
 
 pybind11_add_module(_cmgdb src/CMGDB/_cmgdb/CMGDB.cpp)
 
@@ -32,5 +38,4 @@ target_link_libraries (
   Boost::chrono
   Boost::thread
   Boost::serialization
-  Eigen3::Eigen
   sdsl )
