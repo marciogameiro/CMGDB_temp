@@ -55,9 +55,13 @@ jobs:
       - name: Set environment variable(s)
         run: |
           echo "Hello there!"
-          ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost
-          echo "Hello there 2!"
           ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost
+          echo "Hello there 2!"
+          ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include
+          echo "Hello there 3!"
+          ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost
+          echo "Hello there 4!"
+          cat /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost/version.hpp
           echo "${{ steps.install-boost.outputs.BOOST_ROOT }}"
           echo ${{ steps.install-boost.outputs.BOOST_ROOT }}
           # export BOOST_ROOT="/home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost"
