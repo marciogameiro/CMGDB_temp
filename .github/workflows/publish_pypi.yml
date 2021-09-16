@@ -33,22 +33,29 @@ jobs:
         with:
           boost_version: 1.73.0
 
-      # - name: Install libraries Windows
+      # - name: Install libraries for Windows
 
-      - name: Install libraries macOS
+      - name: Install libraries for macOS
         run: |
           brew upgrade
           brew install gmp
           brew tap Brewsci/bio
           brew install sdsl-lite
+        shell: bash
         if: runner.os == 'macOS'
 
-      - name: Install libraries Linux
+      - name: Install libraries for Linux
         run: |
           sudo apt-get update
           sudo apt install libgmp-dev
           sudo apt-get install libsdsl3
+        shell: bash
         if: runner.os == 'Linux'
+
+      - name: Set environment variable(s)
+        run: |
+          echo "BOOST_ROOT=${{ steps.install-boost.outputs.BOOST_ROOT }}" >> $GITHUB_ENV
+        shell: bash
 
       - name: Checkout repository and submodules
         uses: actions/checkout@v2
@@ -66,7 +73,6 @@ jobs:
           python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD: cp${{ matrix.python }}-*
-          BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
 
       - name: Show files
         run: ls -lh wheelhouse
