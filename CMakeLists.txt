@@ -17,11 +17,12 @@ endif(APPLE)
 
 add_subdirectory(pybind11)
 
+set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/boost)
+
 find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
 
 include_directories (
   ${CMAKE_SOURCE_DIR}/include
-  ${CMAKE_SOURCE_DIR}/boost
   /usr/local/include
   ${USER_INCLUDE_PATH}/database
   ${USER_INCLUDE_PATH} )
