@@ -17,9 +17,13 @@ endif(APPLE)
 
 add_subdirectory(pybind11)
 
+set(Boost_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/boost)
+set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/boost)
+
+find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
+
 include_directories (
   /usr/local/include
-  ${CMAKE_SOURCE_DIR}/boost
   ${CMAKE_SOURCE_DIR}/include
   ${USER_INCLUDE_PATH}/database
   ${USER_INCLUDE_PATH} )
@@ -27,10 +31,6 @@ include_directories (
 link_directories (
   /usr/local/lib
   ${USER_LIBRARY_PATH} )
-
-set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/boost)
-
-find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
 
 message("USER INCLUDE PATH IS ${USER_INCLUDE_PATH}")
 
