@@ -19,13 +19,9 @@ add_subdirectory(pybind11)
 
 find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
 
-message(STATUS "Boost version: ${Boost_VERSION_STRING}")
-message(STATUS "Boost library directory: ${Boost_LIBRARY_DIRS}")
-message(STATUS "Boost include directory: ${Boost_INCLUDE_DIRS}")
-
 include_directories (
   ${CMAKE_SOURCE_DIR}/include
-  ${Boost_INCLUDE_DIRS}
+  ${CMAKE_SOURCE_DIR}/boost
   /usr/local/include
   ${USER_INCLUDE_PATH}/database
   ${USER_INCLUDE_PATH} )
