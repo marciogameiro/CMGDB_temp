@@ -54,7 +54,10 @@ jobs:
 
       - name: Set environment variable(s)
         run: |
-          export BOOST_ROOT="/home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost"
+          echo "Hello there!"
+          echo "${{ steps.install-boost.outputs.BOOST_ROOT }}"
+          echo ${{ steps.install-boost.outputs.BOOST_ROOT }}
+          # export BOOST_ROOT="/home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost"
           # export BOOST_ROOT="${{ steps.install-boost.outputs.BOOST_ROOT }}"
           # echo "::set-env name=BOOST_ROOT::${{ steps.install-boost.outputs.BOOST_ROOT }}"
           # echo "::set-env name=Boost_INCLUDE_DIR::${{ steps.install-boost.outputs.BOOST_ROOT }}/include"
