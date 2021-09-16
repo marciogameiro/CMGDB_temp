@@ -27,16 +27,31 @@ jobs:
         python: [36, 37, 38, 39]
 
     steps:
-      - name: Checkout repository and submodules
-        uses: actions/checkout@v2
-        with:
-          submodules: true
-
       - name: Install boost
         uses: MarkusJx/install-boost@v2.0.0
         id: install-boost
         with:
           boost_version: 1.73.0
+
+      # - name: Install libraries Windows
+
+      - name: Install libraries macOS
+        run: |
+          brew upgrade
+          brew install gmp
+          brew tap Brewsci/bio
+          brew install sdsl-lite
+        if: runner.os == 'macOS'
+
+      - name: Install libraries Linux
+        run: |
+          run: sudo apt-get install gmp
+        if: runner.os == 'Linux'
+
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: true
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -49,6 +64,7 @@ jobs:
           python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD: cp${{ matrix.python }}-*
+          BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
 
       - name: Show files
         run: ls -lh wheelhouse
