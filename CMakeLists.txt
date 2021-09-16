@@ -17,13 +17,14 @@ endif(APPLE)
 
 add_subdirectory(pybind11)
 
-set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
+# set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
 # set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
 
 # set(Boost_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/boost/include)
 # set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/boost)
 
-find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
+find_package(Boost CONFIG)
+# find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
 
 include_directories (
   /usr/local/include
