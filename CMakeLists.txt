@@ -30,8 +30,11 @@ find_package(Boost CONFIG)
 #   set(BOOST_ROOT $ENV{BOOST_ROOT})
 # endif()
 
+set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
+# set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
+
 message("BOOST_ROOT IS ${BOOST_ROOT}")
-message("BOOST_ROOT IS $ENV{BOOST_ROOT}")
+# message("BOOST_ROOT IS $ENV{BOOST_ROOT}")
 
 include_directories (
   /usr/local/include
