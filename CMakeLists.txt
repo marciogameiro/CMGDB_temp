@@ -24,7 +24,13 @@ add_subdirectory(pybind11)
 # set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/boost)
 
 find_package(Boost CONFIG)
-find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
+# find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
+
+# if(NOT DEFINED BOOST_ROOT)
+#   set(BOOST_ROOT $ENV{BOOST_ROOT})
+# endif()
+
+message("BOOST_ROOT IS ${BOOST_ROOT}")
 
 include_directories (
   /usr/local/include
