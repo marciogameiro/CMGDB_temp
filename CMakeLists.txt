@@ -28,11 +28,11 @@ add_subdirectory(pybind11)
 # endif()
 
 set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
-set(Boost_INCLUDE_DIR ${BOOST_ROOT}/include)
+# set(Boost_INCLUDE_DIR ${BOOST_ROOT}/include)
 # set(Boost_INCLUDEDIR ${BOOST_ROOT}/include)
 
 message("BOOST_ROOT IS ${BOOST_ROOT}")
-message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
+# message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
 # message("Boost_INCLUDEDIR IS ${Boost_INCLUDEDIR}")
 # message("BOOST_ROOT IS $ENV{BOOST_ROOT}")
 
