@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        python: [36, 37, 38, 39]
+        python: [38] # [36, 37, 38, 39]
 
     steps:
       - name: Install boost
@@ -46,7 +46,7 @@ jobs:
       - name: Install libraries Linux
         run: |
           sudo apt-get update
-          sudo apt-get install gmp
+          sudo apt install libgmp-dev
           sudo apt-get install libsdsl3
         if: runner.os == 'Linux'
 
@@ -66,6 +66,7 @@ jobs:
           python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD: cp${{ matrix.python }}-*
+          BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
 
       - name: Show files
         run: ls -lh wheelhouse
