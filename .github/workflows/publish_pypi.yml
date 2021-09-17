@@ -84,6 +84,12 @@ jobs:
         shell: bash
         if: runner.os == 'macOS'
 
+      - name: Set environment variable(s)
+        run: |
+          echo "Hello there!"
+          ls -lh /usr/share/miniconda3
+        shell: bash
+
       # - name: Set environment variable(s)
       #   run: |
       #     echo "Hello there!"
