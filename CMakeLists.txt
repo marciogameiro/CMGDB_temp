@@ -41,6 +41,8 @@ if(LINUX AND NOT APPLE)
   set(Boost_INCLUDE_DIR /usr/share/miniconda3/include/boost)
 endif()
 
+message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
+
 # find_package(Boost CONFIG)
 find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
 
