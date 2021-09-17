@@ -88,7 +88,12 @@ jobs:
         run: |
           echo "Hello there!"
           ls -lh /usr/share/miniconda3
+          echo "Hello there 2!"
+          ls -lh /usr/share/miniconda3/include
+          echo "Hello there 3!"
+          ls -lh /usr/share/miniconda3/lib
         shell: bash
+        if: runner.os == 'Linux'
 
       # - name: Set environment variable(s)
       #   run: |
