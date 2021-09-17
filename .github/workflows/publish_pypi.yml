@@ -27,17 +27,18 @@ jobs:
         python: [37] # [36, 37, 38, 39]
 
     steps:
-      - name: Install boost
-        uses: MarkusJx/install-boost@v2.0.0
-        id: install-boost
-        with:
-          boost_version: 1.71.0
+      # - name: Install boost
+      #   uses: MarkusJx/install-boost@v2.0.0
+      #   id: install-boost
+      #   with:
+      #     boost_version: 1.71.0
 
       # - name: Install libraries for Windows
 
       - name: Install libraries for macOS
         run: |
           brew upgrade
+          brew install boost
           brew install gmp
           brew tap Brewsci/bio
           brew install sdsl-lite
@@ -47,28 +48,29 @@ jobs:
       - name: Install libraries for Linux
         run: |
           sudo apt-get update
+          sudo apt-get install libboost-all-dev
           sudo apt install libgmp-dev
           sudo apt-get install libsdsl3
         shell: bash
         if: runner.os == 'Linux'
 
-      - name: Set environment variable(s)
-        run: |
-          echo "Hello there!"
-          ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost
-          echo "Hello there 2!"
-          ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include
-          echo "Hello there 3!"
-          ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost
-          echo "Hello there 4!"
-          cat /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost/version.hpp
-          echo "${{ steps.install-boost.outputs.BOOST_ROOT }}"
-          echo ${{ steps.install-boost.outputs.BOOST_ROOT }}
-          # export BOOST_ROOT="/home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost"
-          # export BOOST_ROOT="${{ steps.install-boost.outputs.BOOST_ROOT }}"
-          # echo "::set-env name=BOOST_ROOT::${{ steps.install-boost.outputs.BOOST_ROOT }}"
-          # echo "::set-env name=Boost_INCLUDE_DIR::${{ steps.install-boost.outputs.BOOST_ROOT }}/include"
-        shell: bash
+      # - name: Set environment variable(s)
+      #   run: |
+      #     echo "Hello there!"
+      #     ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost
+      #     echo "Hello there 2!"
+      #     ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include
+      #     echo "Hello there 3!"
+      #     ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost
+      #     echo "Hello there 4!"
+      #     cat /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost/version.hpp
+      #     echo "${{ steps.install-boost.outputs.BOOST_ROOT }}"
+      #     echo ${{ steps.install-boost.outputs.BOOST_ROOT }}
+      #     # export BOOST_ROOT="/home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost"
+      #     # export BOOST_ROOT="${{ steps.install-boost.outputs.BOOST_ROOT }}"
+      #     # echo "::set-env name=BOOST_ROOT::${{ steps.install-boost.outputs.BOOST_ROOT }}"
+      #     # echo "::set-env name=Boost_INCLUDE_DIR::${{ steps.install-boost.outputs.BOOST_ROOT }}/include"
+      #   shell: bash
 
       - name: Checkout repository and submodules
         uses: actions/checkout@v2
