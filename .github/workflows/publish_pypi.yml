@@ -89,7 +89,7 @@ jobs:
           echo "Hello there!"
           ls -lh /usr/share/miniconda3
           echo "Hello there 2!"
-          ls -lh /usr/share/miniconda3/include
+          ls -lh /usr/share/miniconda3/include/boost
           echo "Hello there 3!"
           ls -lh /usr/share/miniconda3/lib
         shell: bash
