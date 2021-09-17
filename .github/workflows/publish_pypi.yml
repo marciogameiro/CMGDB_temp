@@ -33,17 +33,13 @@ jobs:
       #   with:
       #     boost_version: 1.71.0
 
-      # - name: Install libraries for Windows
-
-      - name: Install libraries for macOS
+      - name: Install libraries for Windows
         run: |
-          brew upgrade
-          brew install boost
-          brew install gmp
-          brew tap Brewsci/bio
-          brew install sdsl-lite
+          conda update conda
+          conda install -c conda-forge boost
+          conda install -c anaconda gmp
+          conda install -c conda-forge sdsl-lite
         shell: bash
-        if: runner.os == 'macOS'
 
       - name: Install libraries for Linux
         run: |
@@ -57,6 +53,16 @@ jobs:
           # sudo apt-get install libsdsl3
         shell: bash
         if: runner.os == 'Linux'
+
+      - name: Install libraries for macOS
+        run: |
+          brew upgrade
+          brew install boost
+          brew install gmp
+          brew tap Brewsci/bio
+          brew install sdsl-lite
+        shell: bash
+        if: runner.os == 'macOS'
 
       # - name: Set environment variable(s)
       #   run: |
