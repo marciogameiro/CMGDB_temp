@@ -33,12 +33,12 @@ jobs:
       #   with:
       #     boost_version: 1.71.0
 
-      - name: Install the SDSL library
-        run: |
-          git clone https://github.com/simongog/sdsl-lite.git
-          cd sdsl-lite
-          ./install.bat
-        if: runner.os == 'Windows'
+      # - name: Install the SDSL library
+      #   run: |
+      #     git clone https://github.com/simongog/sdsl-lite.git
+      #     cd sdsl-lite
+      #     ./install.bat
+      #   if: runner.os == 'Windows'
 
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
@@ -64,7 +64,7 @@ jobs:
         run: |
           # conda update conda
           conda install -c conda-forge boost
-          # conda install -c conda-forge sdsl-lite
+          conda install -c conda-forge sdsl-lite
           conda install -c anaconda gmp
           # sudo apt-get update
           # sudo apt-get install libboost-all-dev
@@ -78,8 +78,8 @@ jobs:
           brew upgrade
           brew install boost
           brew install gmp
-          # brew tap Brewsci/bio
-          # brew install sdsl-lite
+          brew tap Brewsci/bio
+          brew install sdsl-lite
         shell: bash
         if: runner.os == 'macOS'
 
