@@ -41,7 +41,7 @@ message("BOOST_ROOT IS ${BOOST_ROOT}")
 # endif()
 
 # set(BOOST_ROOT /usr/share/miniconda3)
-set(BOOST_INCLUDEDIR /usr/share/miniconda3/include)
+set(BOOST_INCLUDEDIR /usr/share/miniconda3/include/boost)
 
 message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
 message("BOOST_ROOT IS ${BOOST_ROOT}")
