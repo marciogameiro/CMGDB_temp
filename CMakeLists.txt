@@ -40,10 +40,12 @@ message("BOOST_ROOT IS ${BOOST_ROOT}")
 #   set(Boost_INCLUDE_DIR /usr/share/miniconda3/include/boost)
 # endif()
 
-set(BOOST_ROOT /usr/share/miniconda3)
+# set(BOOST_ROOT /usr/share/miniconda3)
+set(BOOST_INCLUDEDIR /usr/share/miniconda3/include)
 
 message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
 message("BOOST_ROOT IS ${BOOST_ROOT}")
+message("BOOST_INCLUDEDIR IS ${BOOST_INCLUDEDIR}")
 
 # find_package(Boost CONFIG)
 find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
