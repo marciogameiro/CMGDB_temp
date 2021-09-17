@@ -39,7 +39,7 @@ jobs:
           miniconda-version: "latest"
           auto-update-conda: true
           activate-environment: conda-env
-          python-version: ${{ matrix.python }}
+          # python-version: ${{ matrix.python }}
         if: runner.os == 'Windows'
 
       - name: Install libraries for Windows
