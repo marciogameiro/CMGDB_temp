@@ -27,11 +27,12 @@ jobs:
         python: [37] # [36, 37, 38, 39]
 
     steps:
-      # - name: Install boost
-      #   uses: MarkusJx/install-boost@v2.0.0
-      #   id: install-boost
-      #   with:
-      #     boost_version: 1.71.0
+      - name: Install boost
+        uses: MarkusJx/install-boost@v2.0.0
+        id: install-boost
+        with:
+          boost_version: 1.71.0
+        if: runner.os == 'Windows'
 
       # - name: Install the SDSL library
       #   run: |
@@ -53,7 +54,7 @@ jobs:
 
       - name: Install libraries for Windows
         run: |
-          conda install -c conda-forge boost
+          # conda install -c conda-forge boost
           # conda install -c conda-forge sdsl-lite
           conda install -c salilab gmp
         # shell: powershell
