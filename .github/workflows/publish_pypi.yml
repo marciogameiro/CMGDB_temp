@@ -33,7 +33,7 @@ jobs:
       #   with:
       #     boost_version: 1.71.0
 
-      - name: Install libraries for Windows
+      - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
         with:
           miniconda-version: "latest"
@@ -41,6 +41,9 @@ jobs:
           auto-activate-base: true
           activate-environment: ""
           python-version: ${{ matrix.python }}
+        if: runner.os == 'Windows'
+
+      - name: Install libraries for Windows
         run: |
           conda install -c conda-forge boost
           conda install -c conda-forge sdsl-lite
