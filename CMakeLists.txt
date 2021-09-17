@@ -36,11 +36,14 @@ message("BOOST_ROOT IS ${BOOST_ROOT}")
 # message("Boost_INCLUDEDIR IS ${Boost_INCLUDEDIR}")
 # message("BOOST_ROOT IS $ENV{BOOST_ROOT}")
 
-if(UNIX AND NOT APPLE)
-  set(Boost_INCLUDE_DIR /usr/share/miniconda3/include/boost)
-endif()
+# if(UNIX AND NOT APPLE)
+#   set(Boost_INCLUDE_DIR /usr/share/miniconda3/include/boost)
+# endif()
+
+set(BOOST_ROOT /usr/share/miniconda3)
 
 message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
+message("BOOST_ROOT IS ${BOOST_ROOT}")
 
 # find_package(Boost CONFIG)
 find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
