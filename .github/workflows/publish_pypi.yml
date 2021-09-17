@@ -47,10 +47,14 @@ jobs:
 
       - name: Install libraries for Linux
         run: |
-          sudo apt-get update
-          sudo apt-get install libboost-all-dev
-          sudo apt install libgmp-dev
-          sudo apt-get install libsdsl3
+          conda update conda
+          conda install -c conda-forge boost
+          conda install -c anaconda gmp
+          conda install -c conda-forge sdsl-lite
+          # sudo apt-get update
+          # sudo apt-get install libboost-all-dev
+          # sudo apt install libgmp-dev
+          # sudo apt-get install libsdsl3
         shell: bash
         if: runner.os == 'Linux'
 
