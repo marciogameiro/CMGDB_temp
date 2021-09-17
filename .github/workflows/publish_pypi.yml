@@ -48,6 +48,7 @@ jobs:
           conda install -c conda-forge sdsl-lite
           conda install -c anaconda gmp
         shell: bash
+        if: runner.os == 'Windows'
 
       - name: Install libraries for Linux
         run: |
