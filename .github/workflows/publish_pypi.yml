@@ -38,6 +38,8 @@ jobs:
         with:
           miniconda-version: "latest"
           auto-update-conda: true
+          # auto-activate-base: true
+          # activate-environment: ""
           activate-environment: conda-env
           # python-version: ${{ matrix.python }}
         if: runner.os == 'Windows'
@@ -47,7 +49,8 @@ jobs:
           conda install -c conda-forge boost
           conda install -c conda-forge sdsl-lite
           conda install -c anaconda gmp
-        shell: bash
+        shell: powershell
+        # shell: bash
         if: runner.os == 'Windows'
 
       - name: Install libraries for Linux
