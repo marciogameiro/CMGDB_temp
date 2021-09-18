@@ -49,8 +49,7 @@ jobs:
         with:
           architecture: x86
           # architecture: x64
-          miniconda-version: 4.10
-          # miniconda-version: "latest"
+          miniconda-version: "latest"
           auto-update-conda: true
           # auto-activate-base: true
           # activate-environment: ""
@@ -139,6 +138,7 @@ jobs:
           python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD: cp${{ matrix.python }}-*
+          CIBW_ARCHS_WINDOWS = auto64
 
       - name: Show files
         run: ls -lh wheelhouse
