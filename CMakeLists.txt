@@ -50,8 +50,8 @@ message("BOOST_INCLUDEDIR IS ${BOOST_INCLUDEDIR}")
 set(BOOST_INCLUDEDIR /usr/share/miniconda3/include)
 
 # find_package(Boost CONFIG)
-# find_package(Boost COMPONENTS chrono thread serialization)
-find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
+find_package(Boost COMPONENTS chrono thread serialization)
+# find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
 
 if(Boost_FOUND)
   message(STATUS "Success!")
