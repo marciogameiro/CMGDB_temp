@@ -73,7 +73,16 @@ pybind11_add_module(_cmgdb src/CMGDB/_cmgdb/CMGDB.cpp)
 
 target_link_libraries (
   _cmgdb PRIVATE
-  Boost::chrono
-  Boost::thread
-  Boost::serialization
+  boost_chrono
+  boost_thread
+  boost_wserialization
   sdsl )
+
+if(APPLE)
+  target_link_libraries (
+    _cmgdb PRIVATE
+    Boost::chrono
+    Boost::thread
+    Boost::serialization
+    sdsl )
+endif()
