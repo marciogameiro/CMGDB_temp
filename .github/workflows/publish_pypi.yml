@@ -47,14 +47,15 @@ jobs:
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
         with:
-          miniconda-version: "latest"
+          architecture: x86
+          # architecture: x64
+          miniconda-version: 4.10
+          # miniconda-version: "latest"
           auto-update-conda: true
           # auto-activate-base: true
           # activate-environment: ""
           activate-environment: conda-env
           # python-version: ${{ matrix.python }}
-          architecture: x86
-          # architecture: x64
         if: runner.os == 'Windows' || runner.os == 'Linux'
 
       - name: Install libraries for Windows
