@@ -48,7 +48,8 @@ message("BOOST_ROOT IS ${BOOST_ROOT}")
 message("BOOST_INCLUDEDIR IS ${BOOST_INCLUDEDIR}")
 
 # find_package(Boost CONFIG)
-find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
+find_package(Boost COMPONENTS chrono thread serialization)
+# find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
 
 if(Boost_FOUND)
   message(STATUS "Success!")
@@ -56,11 +57,13 @@ endif()
 
 include_directories (
   /usr/local/include
+  /usr/share/miniconda3/include
   ${CMAKE_SOURCE_DIR}/include
   ${USER_INCLUDE_PATH}/database
   ${USER_INCLUDE_PATH} )
 
 link_directories (
+  /usr/share/miniconda3/lib
   /usr/local/lib
   ${USER_LIBRARY_PATH} )
 
