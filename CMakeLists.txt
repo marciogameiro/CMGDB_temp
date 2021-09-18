@@ -50,8 +50,8 @@ message("BOOST_INCLUDEDIR IS ${BOOST_INCLUDEDIR}")
 set(BOOST_INCLUDEDIR /usr/share/miniconda3/include)
 
 # find_package(Boost CONFIG)
-find_package(Boost COMPONENTS chrono thread serialization)
-# find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
+# find_package(Boost COMPONENTS chrono thread serialization)
+find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
 
 if(Boost_FOUND)
   message(STATUS "Success!")
@@ -73,18 +73,16 @@ message("USER INCLUDE PATH IS ${USER_INCLUDE_PATH}")
 
 pybind11_add_module(_cmgdb src/CMGDB/_cmgdb/CMGDB.cpp)
 
+# target_link_libraries (
+#   _cmgdb PRIVATE
+#   boost_chrono
+#   boost_thread
+#   boost_wserialization
+#   sdsl )
+
 target_link_libraries (
   _cmgdb PRIVATE
-  boost_chrono
-  boost_thread
-  boost_wserialization
+  Boost::chrono
+  Boost::thread
+  Boost::serialization
   sdsl )
-
-if(APPLE)
-  target_link_libraries (
-    _cmgdb PRIVATE
-    Boost::chrono
-    Boost::thread
-    Boost::serialization
-    sdsl )
-endif()
