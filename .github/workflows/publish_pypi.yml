@@ -136,7 +136,7 @@ jobs:
           python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD: cp${{ matrix.python }}-*
-          CIBW_ARCHS_WINDOWS = auto64
+          CIBW_ARCHS_WINDOWS: auto64
 
       - name: Show files
         run: ls -lh wheelhouse
