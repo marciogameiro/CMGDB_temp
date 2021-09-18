@@ -39,7 +39,8 @@ jobs:
           git clone https://github.com/simongog/sdsl-lite.git
           cd sdsl-lite
           ./install.sh
-        shell: bash
+        shell: pwsh
+        # shell: bash
         if: runner.os == 'Windows'
 
       - name: Set up conda environment
