@@ -55,8 +55,10 @@ endif()
 
 message("BOOST_ROOT IS ${BOOST_ROOT}")
 
+find_package(boost_filesystem 1.76.0 REQUIRED CONFIG)
+
 # find_package(Boost CONFIG)
-find_package(Boost COMPONENTS chrono thread serialization)
+# find_package(Boost COMPONENTS chrono thread serialization)
 # find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
 
 if(Boost_FOUND)
