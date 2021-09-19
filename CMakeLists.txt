@@ -47,7 +47,13 @@ message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
 message("BOOST_ROOT IS ${BOOST_ROOT}")
 message("BOOST_INCLUDEDIR IS ${BOOST_INCLUDEDIR}")
 
-set(BOOST_INCLUDEDIR /usr/share/miniconda3/include)
+# set(BOOST_INCLUDEDIR /usr/share/miniconda3/include)
+
+if(UNIX AND NOT APPLE)
+  set(BOOST_ROOT /usr/local)
+endif()
+
+message("BOOST_ROOT IS ${BOOST_ROOT}")
 
 # find_package(Boost CONFIG)
 find_package(Boost COMPONENTS chrono thread serialization)
