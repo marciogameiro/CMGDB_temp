@@ -49,6 +49,9 @@ message("BOOST_INCLUDEDIR IS ${BOOST_INCLUDEDIR}")
 
 # set(BOOST_INCLUDEDIR /usr/share/miniconda3/include)
 
+set(Boost_INCLUDE_DIR /usr/share/miniconda3/include)
+set(Boost_INCLUDE_DIR2 /usr/share/miniconda3/include/boost)
+
 if(UNIX AND NOT APPLE)
   set(BOOST_ROOT /usr/local)
 endif()
@@ -66,6 +69,7 @@ endif()
 
 include_directories (
   ${Boost_INCLUDE_DIR}
+  ${Boost_INCLUDE_DIR2}
   /usr/local/include
   /usr/share/miniconda3/include
   ${CMAKE_SOURCE_DIR}/include
