@@ -66,6 +66,7 @@ if(Boost_FOUND)
 endif()
 
 include_directories (
+  ${Boost_INCLUDE_DIR}
   /usr/local/include
   /usr/share/miniconda3/include
   ${CMAKE_SOURCE_DIR}/include
