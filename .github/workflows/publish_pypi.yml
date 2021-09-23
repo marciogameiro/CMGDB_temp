@@ -108,16 +108,16 @@ jobs:
         # shell: bash
         if: runner.os == 'Windows'
 
-      - name: Set environment variable(s)
-        run: |
-          echo "Hello there!"
-          ls -lh /usr/share/miniconda3
-          # echo "Hello there 2!"
-          # ls -lh /usr/share/miniconda3/include/boost
-          echo "Hello there 3!"
-          ls -lh /usr/share/miniconda3/lib/libboost*
-        shell: bash
-        if: runner.os == 'Linux'
+      # - name: Set environment variable(s)
+      #   run: |
+      #     echo "Hello there!"
+      #     ls -lh /usr/share/miniconda3
+      #     # echo "Hello there 2!"
+      #     # ls -lh /usr/share/miniconda3/include/boost
+      #     echo "Hello there 3!"
+      #     ls -lh /usr/share/miniconda3/lib/libboost*
+      #   shell: bash
+      #   if: runner.os == 'Linux'
 
       # - name: Set environment variable(s)
       #   run: |
