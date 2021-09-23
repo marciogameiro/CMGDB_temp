@@ -112,7 +112,7 @@ jobs:
       - name: Set environment variable(s)
         run: |
           echo "Hello there!"
-          ls -lh /usr/share/miniconda3/include/boost/version.hpp
+          ls -lh /usr/share/miniconda3/include/boost
           # echo "Hello there 2!"
           # ls -lh /usr/share/miniconda3/include/boost
           # echo "Hello there 3!"
