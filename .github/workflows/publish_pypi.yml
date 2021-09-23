@@ -55,11 +55,11 @@ jobs:
       #     # python-version: ${{ matrix.python }}
       #   if: runner.os == 'Windows' || runner.os == 'Linux'
 
-    - name: Add conda to system path
-      run: |
-        # $CONDA is an environment variable pointing to the
-        # root of the miniconda directory
-        echo $CONDA/bin >> $GITHUB_PATH
+      - name: Add conda to system path
+        run: |
+          # $CONDA is an environment variable pointing to the
+          # root of the miniconda directory
+          echo $CONDA/bin >> $GITHUB_PATH
 
       - name: Install libraries for Windows
         run: |
