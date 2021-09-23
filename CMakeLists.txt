@@ -71,7 +71,7 @@ include_directories (
   ${Boost_INCLUDE_DIR}
   ${Boost_INCLUDE_DIR2}
   /usr/local/include
-  /usr/share/miniconda3/include
+  # /usr/share/miniconda3/include
   ${CMAKE_SOURCE_DIR}/include
   ${USER_INCLUDE_PATH}/database
   ${USER_INCLUDE_PATH} )
