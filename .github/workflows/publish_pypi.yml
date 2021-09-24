@@ -42,13 +42,6 @@ jobs:
           C:\Miniconda\condabin\conda.bat init powershell
         if: runner.os == 'Windows'
 
-      - name: Lint with flake8
-        run: |
-          # Activate the base environment
-          C:\Miniconda\condabin\conda.bat activate base
-          C:\Miniconda\condabin\conda.bat install flake8
-          # stop the build if there are Python syntax errors or undefined names
-
       - name: Install libraries for Windows
         run: |
           # Activate the base environment
