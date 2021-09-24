@@ -109,15 +109,15 @@ jobs:
         shell: bash
         if: runner.os == 'macOS'
 
-      - name: Set environment variable(s)
-        run: |
-          echo "Hello there!"
-          dir C:\Miniconda3\envs\conda-env
-          echo "Hello there 2!"
-          dir C:\Miniconda3\envs\conda-env\include
-        shell: pwsh
-        # shell: bash
-        if: runner.os == 'Windows'
+      # - name: Set environment variable(s)
+      #   run: |
+      #     echo "Hello there!"
+      #     dir C:\Miniconda3\envs\conda-env
+      #     echo "Hello there 2!"
+      #     dir C:\Miniconda3\envs\conda-env\include
+      #   shell: pwsh
+      #   # shell: bash
+      #   if: runner.os == 'Windows'
 
       - name: Set environment variable(s)
         run: |
