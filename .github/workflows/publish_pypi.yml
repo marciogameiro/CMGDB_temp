@@ -111,6 +111,8 @@ jobs:
 
       - name: Set environment variable(s)
         run: |
+          echo "Hello there 0!"
+          sudo chmod uog+r /usr/share/miniconda/include/boost/*
           echo "Hello there!"
           ls -lh /usr/share/miniconda/include/boost/version.hpp
           echo "Hello there 2!"
