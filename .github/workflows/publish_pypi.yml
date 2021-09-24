@@ -114,7 +114,7 @@ jobs:
           echo "Hello there!"
           dir C:\Miniconda
           echo "Hello there 2!"
-          dir C:\Miniconda\include
+          dir C:\Miniconda\pkgs
           echo "Hello there 3!"
           C:\Miniconda\condabin\conda.bat list
           echo "Hello there 4!"
