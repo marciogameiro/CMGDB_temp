@@ -114,11 +114,13 @@ jobs:
           echo "Hello there!"
           dir C:\Miniconda
           echo "Hello there 2!"
-          C:\Miniconda\condabin\conda.bat conda list
+          dir C:\Miniconda\include
           echo "Hello there 3!"
-          C:\Miniconda\condabin\conda.bat conda info boost
+          C:\Miniconda\condabin\conda.bat list
           echo "Hello there 4!"
-          C:\Miniconda\condabin\conda.bat conda info gmp
+          C:\Miniconda\condabin\conda.bat info boost
+          echo "Hello there 5!"
+          C:\Miniconda\condabin\conda.bat info gmp
           # echo "Hello there 2!"
           # dir C:\Miniconda\envs\base\include
         shell: pwsh
