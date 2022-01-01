@@ -1,0 +1,9 @@
+{
+  "name": "CMGDB",
+  "version-string": "latest",
+  "dependencies": [
+    "boost",
+    "eigen3",
+    "gmp"
+  ]
+}

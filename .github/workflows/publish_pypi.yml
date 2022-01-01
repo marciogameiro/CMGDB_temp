@@ -45,7 +45,7 @@ jobs:
       - name: Install libraries 1
         uses: lukka/run-vcpkg@v10
         with:
-          vcpkgArguments: 'boost eigen3 gmp'
+          vcpkgJsonGlob: 'vcpkg.json'
           vcpkgDirectory: '${{ github.workspace }}/vcpkg'
 
       # - name: Install libraries for Windows
