@@ -35,21 +35,24 @@ jobs:
       #     boost_version: 1.71.0
       #   if: runner.os == 'Windows'
 
-      - name: Set up conda environment on Windows
-        run: |
-          # Set up base environment
-          C:\Miniconda\condabin\conda.bat env update --name base
-          C:\Miniconda\condabin\conda.bat init powershell
-        if: runner.os == 'Windows'
+      # - name: Set up conda environment on Windows
+      #   run: |
+      #     # Set up base environment
+      #     C:\Miniconda\condabin\conda.bat env update --name base
+      #     C:\Miniconda\condabin\conda.bat init powershell
+      #   if: runner.os == 'Windows'
 
       - name: Install libraries for Windows
         run: |
-          # Activate the base environment
-          C:\Miniconda\condabin\conda.bat activate base
-          C:\Miniconda\condabin\conda.bat install -c conda-forge boost
-          C:\Miniconda\condabin\conda.bat install -c conda-forge eigen
-          C:\Miniconda\condabin\conda.bat install -c salilab gmp
-          # conda install -c conda-forge sdsl-lite
+          # # Activate the base environment
+          # C:\Miniconda\condabin\conda.bat activate base
+          # C:\Miniconda\condabin\conda.bat install -c conda-forge boost
+          # C:\Miniconda\condabin\conda.bat install -c conda-forge eigen
+          # C:\Miniconda\condabin\conda.bat install -c salilab gmp
+          # # conda install -c conda-forge sdsl-lite
+          choco install boost-msvc-14.1
+          choco install eigen
+          choco install gmp
         shell: powershell
         # shell: pwsh
         # shell: bash
@@ -76,25 +79,25 @@ jobs:
       #     # python-version: ${{ matrix.python }}
       #   if: runner.os == 'Windows' || runner.os == 'Linux'
 
-      - name: Add conda to system path
-        run: |
-          # $CONDA is an environment variable pointing to the
-          # root of the miniconda directory
-          echo $CONDA/bin >> $GITHUB_PATH
-        if: runner.os == 'Linux'
+      # - name: Add conda to system path
+      #   run: |
+      #     # $CONDA is an environment variable pointing to the
+      #     # root of the miniconda directory
+      #     echo $CONDA/bin >> $GITHUB_PATH
+      #   if: runner.os == 'Linux'
 
       - name: Install libraries for Linux
         run: |
-          conda update conda
-          conda install -c conda-forge boost
-          conda install -c conda-forge eigen
-          conda install -c anaconda gmp
-          conda install -c conda-forge sdsl-lite
-          # sudo apt-get update
-          # sudo apt-get install libboost-all-dev
-          # sudo apt install libeigen3-dev
-          # sudo apt install libgmp-dev
-          # sudo apt-get install libsdsl3
+          # conda update conda
+          # conda install -c conda-forge boost
+          # conda install -c conda-forge eigen
+          # conda install -c anaconda gmp
+          # conda install -c conda-forge sdsl-lite
+          sudo apt-get update
+          sudo apt-get install libboost-all-dev
+          sudo apt install libeigen3-dev
+          sudo apt install libgmp-dev
+          sudo apt-get install libsdsl3
         shell: bash
         if: runner.os == 'Linux'
 
@@ -109,36 +112,36 @@ jobs:
         shell: bash
         if: runner.os == 'macOS'
 
-      - name: Set environment variable(s)
-        run: |
-          echo "Hello there!"
-          dir C:\Miniconda
-          echo "Hello there 2!"
-          dir C:\Miniconda\pkgs
-          echo "Hello there 3!"
-          C:\Miniconda\condabin\conda.bat list
-          echo "Hello there 4!"
-          C:\Miniconda\condabin\conda.bat info boost
-          echo "Hello there 5!"
-          C:\Miniconda\condabin\conda.bat info gmp
-          # echo "Hello there 2!"
-          # dir C:\Miniconda\envs\base\include
-        shell: pwsh
-        # shell: bash
-        if: runner.os == 'Windows'
+      # - name: Set environment variable(s)
+      #   run: |
+      #     echo "Hello there!"
+      #     dir C:\Miniconda
+      #     echo "Hello there 2!"
+      #     dir C:\Miniconda\pkgs
+      #     echo "Hello there 3!"
+      #     C:\Miniconda\condabin\conda.bat list
+      #     echo "Hello there 4!"
+      #     C:\Miniconda\condabin\conda.bat info boost
+      #     echo "Hello there 5!"
+      #     C:\Miniconda\condabin\conda.bat info gmp
+      #     # echo "Hello there 2!"
+      #     # dir C:\Miniconda\envs\base\include
+      #   shell: pwsh
+      #   # shell: bash
+      #   if: runner.os == 'Windows'
 
-      - name: Set environment variable(s)
-        run: |
-          echo "Hello there 0!"
-          sudo chmod uog+rw /usr/share/miniconda/include/boost/*
-          echo "Hello there!"
-          ls -lh /usr/share/miniconda/include/boost/version.hpp
-          echo "Hello there 2!"
-          ls -lh /usr/share/miniconda/include
-          # echo "Hello there 3!"
-          # ls -lh /usr/share/miniconda3/lib/libboost*
-        shell: bash
-        if: runner.os == 'Linux'
+      # - name: Set environment variable(s)
+      #   run: |
+      #     echo "Hello there 0!"
+      #     sudo chmod uog+rw /usr/share/miniconda/include/boost/*
+      #     echo "Hello there!"
+      #     ls -lh /usr/share/miniconda/include/boost/version.hpp
+      #     echo "Hello there 2!"
+      #     ls -lh /usr/share/miniconda/include
+      #     # echo "Hello there 3!"
+      #     # ls -lh /usr/share/miniconda3/lib/libboost*
+      #   shell: bash
+      #   if: runner.os == 'Linux'
 
       # - name: Set environment variable(s)
       #   run: |
