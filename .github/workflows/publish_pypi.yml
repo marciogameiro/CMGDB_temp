@@ -158,6 +158,20 @@ jobs:
         shell: bash
         if: runner.os == 'macOS'
 
+      - name: Display files info
+        run: |
+          echo "Printing contents of home folder"
+          dir C:
+        shell: pwsh
+        if: runner.os == 'Windows'
+
+      - name: Display files info
+        run: |
+          echo "Printing contents of home folder"
+          ls -lh
+        shell: bash
+        if: runner.os == 'Linux'
+
       # - name: Set environment variable(s)
       #   run: |
       #     echo "Hello there!"
