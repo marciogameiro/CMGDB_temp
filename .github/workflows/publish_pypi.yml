@@ -81,7 +81,7 @@ jobs:
     #       # fix up paths to be forward slashes consistently
     #       BOOST_ROOT=$(echo $BOOST_ROOT | sed 's/\\/\//g')
     #     fi
-        mkdir -p $BOOST_ROOT
+#        mkdir -p $BOOST_ROOT
         curl --progress-bar --location --output $BOOST_ROOT/download.tar.bz2 $BOOST_URL
         7z -o$BOOST_ROOT x $BOOST_ROOT/download.tar.bz2 -y -bd
         7z -o$BOOST_ROOT x $BOOST_ROOT/download.tar -y -bd
