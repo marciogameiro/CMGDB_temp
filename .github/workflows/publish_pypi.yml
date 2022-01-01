@@ -163,7 +163,7 @@ jobs:
           echo "Printing contents of home folder"
           # dir C:
           pwd
-          dir CMGDB_temp*
+          dir D:\a\CMGDB_temp
         shell: pwsh
         if: runner.os == 'Windows'
 
