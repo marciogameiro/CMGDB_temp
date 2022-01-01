@@ -92,9 +92,11 @@ pybind11_add_module(_cmgdb src/CMGDB/_cmgdb/CMGDB.cpp)
 #   boost_wserialization
 #   sdsl )
 
-target_link_libraries (
-  _cmgdb PRIVATE
-  Boost::chrono
-  Boost::thread
-  Boost::serialization
-  sdsl )
+target_link_libraries ( _cmgdb PRIVATE sdsl )
+
+# target_link_libraries (
+#   _cmgdb PRIVATE
+#   Boost::chrono
+#   Boost::thread
+#   Boost::serialization
+#   sdsl )
