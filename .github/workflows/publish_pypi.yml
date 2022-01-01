@@ -42,24 +42,30 @@ jobs:
       #     C:\Miniconda\condabin\conda.bat init powershell
       #   if: runner.os == 'Windows'
 
-      - name: Install libraries for Windows
-        run: |
-          # # Activate the base environment
-          # C:\Miniconda\condabin\conda.bat activate base
-          # C:\Miniconda\condabin\conda.bat install -c conda-forge boost
-          # C:\Miniconda\condabin\conda.bat install -c conda-forge eigen
-          # C:\Miniconda\condabin\conda.bat install -c salilab gmp
-          # # conda install -c conda-forge sdsl-lite
-          # choco install boost-msvc-14.1
-          # choco install eigen
-          # choco install gmp
-          C:/vcpkg/vcpkg.exe install boost
-          C:/vcpkg/vcpkg.exe install eigen3
-          C:/vcpkg/vcpkg.exe install gmp
-        shell: powershell
-        # shell: pwsh
-        # shell: bash
-        if: runner.os == 'Windows'
+      - name: Install libraries 1
+        uses: lukka/run-vcpkg@v10
+        with:
+          vcpkgArguments: 'boost eigen3 gmp'
+          # vcpkgDirectory: '${{ github.workspace }}/vcpkg'
+
+      # - name: Install libraries for Windows
+      #   run: |
+      #     # # Activate the base environment
+      #     # C:\Miniconda\condabin\conda.bat activate base
+      #     # C:\Miniconda\condabin\conda.bat install -c conda-forge boost
+      #     # C:\Miniconda\condabin\conda.bat install -c conda-forge eigen
+      #     # C:\Miniconda\condabin\conda.bat install -c salilab gmp
+      #     # # conda install -c conda-forge sdsl-lite
+      #     # choco install boost-msvc-14.1
+      #     # choco install eigen
+      #     # choco install gmp
+      #     # C:/vcpkg/vcpkg.exe install boost
+      #     # C:/vcpkg/vcpkg.exe install eigen3
+      #     # C:/vcpkg/vcpkg.exe install gmp
+      #   shell: powershell
+      #   # shell: pwsh
+      #   # shell: bash
+      #   if: runner.os == 'Windows'
 
       - name: Install the SDSL library
         run: |
@@ -101,9 +107,9 @@ jobs:
           # sudo apt install libeigen3-dev
           # sudo apt install libgmp-dev
           # sudo apt-get install libsdsl3
-          vcpkg/vcpkg install boost
-          vcpkg/vcpkg install eigen3
-          vcpkg/vcpkg install gmp
+          # vcpkg/vcpkg install boost
+          # vcpkg/vcpkg install eigen3
+          # vcpkg/vcpkg install gmp
           sudo apt-get install libsdsl3
         shell: bash
         if: runner.os == 'Linux'
