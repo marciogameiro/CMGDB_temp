@@ -161,14 +161,18 @@ jobs:
       - name: Display files info
         run: |
           echo "Printing contents of home folder"
-          dir C:
+          # dir C:
+          pwd
+          dir CMGDB_temp*
         shell: pwsh
         if: runner.os == 'Windows'
 
       - name: Display files info
         run: |
           echo "Printing contents of home folder"
-          ls -lh
+          # ls -lh
+          pwd
+          ls -l CMGDB_temp*
         shell: bash
         if: runner.os == 'Linux'
 
