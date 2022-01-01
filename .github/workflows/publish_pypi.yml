@@ -163,8 +163,8 @@ jobs:
           echo "Printing contents of home folder"
           pwd
           # dir D:\a\CMGDB_temp\*
-          dir D:\a\CMGDB_temp\CMGDB_temp\*
-          # dir D:\a\CMGDB_temp\CMGDB_temp\boost\*
+          # dir D:\a\CMGDB_temp\CMGDB_temp\*
+          dir D:\a\CMGDB_temp\CMGDB_temp\boost\*.hpp
         shell: pwsh
         if: runner.os == 'Windows'
 
@@ -173,8 +173,8 @@ jobs:
           echo "Printing contents of home folder"
           pwd
           # ls -l /home/runner/work/CMGDB_temp/*
-          ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/*
-          # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/boost/*
+          # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/*
+          ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/boost/*.hpp
         shell: bash
         if: runner.os == 'Linux'
 
