@@ -164,15 +164,16 @@ jobs:
           # dir C:
           pwd
           dir D:\a\CMGDB_temp
+          dir D:\a\CMGDB_temp\CMGDB_temp
         shell: pwsh
         if: runner.os == 'Windows'
 
       - name: Display files info
         run: |
           echo "Printing contents of home folder"
-          # ls -lh
           pwd
           ls -l /home/runner/work/CMGDB_temp
+          ls -l /home/runner/work/CMGDB_temp/CMGDB_temp
         shell: bash
         if: runner.os == 'Linux'
 
