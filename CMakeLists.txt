@@ -17,6 +17,10 @@ endif(APPLE)
 
 add_subdirectory(pybind11)
 
+set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/../boost)
+message("BOOST_ROOT IS ${BOOST_ROOT}")
+find_package(Boost)
+
 # set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
 # set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
 
@@ -31,7 +35,7 @@ add_subdirectory(pybind11)
 # set(Boost_INCLUDE_DIR ${BOOST_ROOT}/include)
 # set(Boost_INCLUDEDIR ${BOOST_ROOT}/include)
 
-message("BOOST_ROOT IS ${BOOST_ROOT}")
+# message("BOOST_ROOT IS ${BOOST_ROOT}")
 # message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
 # message("Boost_INCLUDEDIR IS ${Boost_INCLUDEDIR}")
 # message("BOOST_ROOT IS $ENV{BOOST_ROOT}")
@@ -43,9 +47,9 @@ message("BOOST_ROOT IS ${BOOST_ROOT}")
 # set(BOOST_ROOT /usr/share/miniconda3)
 # set(BOOST_INCLUDEDIR /usr/share/miniconda3/include/boost)
 
-message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
-message("BOOST_ROOT IS ${BOOST_ROOT}")
-message("BOOST_INCLUDEDIR IS ${BOOST_INCLUDEDIR}")
+# message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
+# message("BOOST_ROOT IS ${BOOST_ROOT}")
+# message("BOOST_INCLUDEDIR IS ${BOOST_INCLUDEDIR}")
 
 # set(BOOST_INCLUDEDIR /usr/share/miniconda3/include)
 
