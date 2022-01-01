@@ -52,12 +52,12 @@ jobs:
       #     vcpkgDirectory: '${{ github.workspace }}/vcpkg'
       #     vcpkgJsonGlob: 'vcpkg.json'
 
-    - name: Restore Boost cache
-      uses: actions/cache@v2.1.6
-      id: cache-boost
-      with:
-        path: ${{env.BOOST_ROOT}}
-        key: boost
+    # - name: Restore Boost cache
+    #   uses: actions/cache@v2.1.6
+    #   id: cache-boost
+    #   with:
+    #     path: ${{env.BOOST_ROOT}}
+    #     key: boost
 
     - name: Install Boost
       if: steps.cache-boost.outputs.cache-hit != 'true'
