@@ -31,6 +31,27 @@ jobs:
       BOOST_ROOT: ${{ github.workspace }}/boost
       BOOST_URL: https://sourceforge.net/projects/boost/files/boost/1.72.0/boost_1_72_0.tar.bz2/download
 
+    steps:
+      # - name: Install boost
+      #   uses: MarkusJx/install-boost@v2.0.0
+      #   id: install-boost
+      #   with:
+      #     boost_version: 1.71.0
+      #   if: runner.os == 'Windows'
+
+      # - name: Set up conda environment on Windows
+      #   run: |
+      #     # Set up base environment
+      #     C:\Miniconda\condabin\conda.bat env update --name base
+      #     C:\Miniconda\condabin\conda.bat init powershell
+      #   if: runner.os == 'Windows'
+
+      # - name: Install libraries 1
+      #   uses: lukka/run-vcpkg@v10
+      #   with:
+      #     vcpkgDirectory: '${{ github.workspace }}/vcpkg'
+      #     vcpkgJsonGlob: 'vcpkg.json'
+
     - name: Restore Boost cache
       uses: actions/cache@v2.1.6
       id: cache-boost
@@ -52,27 +73,6 @@ jobs:
         cd $BOOST_ROOT && cp -r boost_*/* .
         rm -rf boost_*/* download.tar.bz2 download.tar
       shell: bash
-
-    steps:
-      # - name: Install boost
-      #   uses: MarkusJx/install-boost@v2.0.0
-      #   id: install-boost
-      #   with:
-      #     boost_version: 1.71.0
-      #   if: runner.os == 'Windows'
-
-      # - name: Set up conda environment on Windows
-      #   run: |
-      #     # Set up base environment
-      #     C:\Miniconda\condabin\conda.bat env update --name base
-      #     C:\Miniconda\condabin\conda.bat init powershell
-      #   if: runner.os == 'Windows'
-
-      # - name: Install libraries 1
-      #   uses: lukka/run-vcpkg@v10
-      #   with:
-      #     vcpkgDirectory: '${{ github.workspace }}/vcpkg'
-      #     vcpkgJsonGlob: 'vcpkg.json'
 
       - name: Install libraries for Windows
         run: |
