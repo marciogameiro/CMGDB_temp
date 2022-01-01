@@ -52,27 +52,12 @@ jobs:
       #     vcpkgDirectory: '${{ github.workspace }}/vcpkg'
       #     vcpkgJsonGlob: 'vcpkg.json'
 
-    # - name: Restore Boost cache
-    #   uses: actions/cache@v2.1.6
-    #   id: cache-boost
-    #   with:
-    #     path: ${{ env.BOOST_ROOT }}
-    #     key: boost
-
-    # - name: Install Boost
-    #   if: steps.cache-boost.outputs.cache-hit != 'true'
-    #   run: |
-    #     if [ "$OS" == "Windows_NT" ]; then
-    #       # fix up paths to be forward slashes consistently
-    #       BOOST_ROOT=$(echo $BOOST_ROOT | sed 's/\\/\//g')
-    #     fi
-    #     mkdir -p $BOOST_ROOT
-    #     curl --progress-bar --location --output $BOOST_ROOT/download.tar.bz2 $BOOST_URL
-    #     7z -o$BOOST_ROOT x $BOOST_ROOT/download.tar.bz2 -y -bd
-    #     7z -o$BOOST_ROOT x $BOOST_ROOT/download.tar -y -bd
-    #     cd $BOOST_ROOT && cp -r boost_*/* .
-    #     rm -rf boost_*/* download.tar.bz2 download.tar
-    #   shell: bash
+      - name: Restore Boost cache
+        uses: actions/cache@v2.1.6
+        id: cache-boost
+        with:
+          path: ${{ env.BOOST_ROOT }}
+          key: boost
 
       - name: Install Boost
         if: steps.cache-boost.outputs.cache-hit != 'true'
@@ -98,11 +83,11 @@ jobs:
           # C:\Miniconda\condabin\conda.bat install -c salilab gmp
           # # conda install -c conda-forge sdsl-lite
           # choco install boost-msvc-14.1
-          choco install eigen
-          choco install gmp
+          # choco install eigen
+          # choco install gmp
           # C:/vcpkg/vcpkg.exe install boost
-          # C:/vcpkg/vcpkg.exe install eigen3
-          # C:/vcpkg/vcpkg.exe install gmp
+          C:/vcpkg/vcpkg.exe install eigen3
+          C:/vcpkg/vcpkg.exe install gmp
         shell: powershell
         # shell: pwsh
         # shell: bash
