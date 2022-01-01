@@ -172,7 +172,7 @@ jobs:
           echo "Printing contents of home folder"
           # ls -lh
           pwd
-          ls -l CMGDB_temp*
+          ls -l /home/runner/work/CMGDB_temp
         shell: bash
         if: runner.os == 'Linux'
 
