@@ -87,7 +87,8 @@ jobs:
           # choco install gmp
           # C:/vcpkg/vcpkg.exe install boost
           C:/vcpkg/vcpkg.exe install eigen3
-          C:/vcpkg/vcpkg.exe install gmp
+          .\vcpkg install gmp
+          # C:/vcpkg/vcpkg.exe install gmp
         shell: powershell
         # shell: pwsh
         # shell: bash
