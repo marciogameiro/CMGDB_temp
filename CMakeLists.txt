@@ -17,9 +17,13 @@ endif(APPLE)
 
 add_subdirectory(pybind11)
 
-set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/../boost)
+
+message("CMAKE_SOURCE_DIR IS ${CMAKE_SOURCE_DIR}")
+
+set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/boost)
 message("BOOST_ROOT IS ${BOOST_ROOT}")
 find_package(Boost)
+
 
 # set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
 # set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
