@@ -16,7 +16,6 @@ if(APPLE)
 endif(APPLE)
 
 add_subdirectory(pybind11)
-add_subdirectory(boost)
 
 # set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
 # set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
