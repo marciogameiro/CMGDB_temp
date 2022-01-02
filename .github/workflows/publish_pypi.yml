@@ -23,7 +23,8 @@ jobs:
       # Build the other wheels even if one fails
       fail-fast: false
       matrix:
-        os: [windows-latest]
+        os: [ubuntu-latest]
+        # os: [windows-latest]
         # os: [windows-latest, ubuntu-18.04, macos-latest]
         # os: [windows-latest, ubuntu-latest, macos-latest]
         python: [37] # [36, 37, 38, 39]
@@ -222,6 +223,7 @@ jobs:
           # dir D:\a\CMGDB_temp\CMGDB_temp\src\CMGDB\SaveMorseData.py
           # dir D:\a\CMGDB_temp\CMGDB_temp\boost\*
           # cat D:/a/CMGDB_temp/CMGDB_temp/boost/boost/inlcude/boost/version.hpp
+          dir D:\a\CMGDB_temp\CMGDB_temp\*
         shell: pwsh
         if: runner.os == 'Windows'
 
@@ -238,7 +240,8 @@ jobs:
           # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/src/CMGDB/SaveMorseData.py
           # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/boost/*
           # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost/version.hpp
-          cat /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost/version.hpp
+          # cat /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost/version.hpp
+          ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/*
         shell: bash
         if: runner.os == 'Linux'
 
@@ -308,9 +311,9 @@ jobs:
         env:
           CIBW_BUILD: cp${{ matrix.python }}-*
           CIBW_ARCHS_WINDOWS: auto64
-          BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
+          # BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
           # CIBW_ENVIRONMENT: "BOOST_INCLUDE=${BOOST_ROOT}"
-          CIBW_ENVIRONMENT: Boost_INCLUDE_DIR=${BOOST_ROOT}/include
+          # CIBW_ENVIRONMENT: Boost_INCLUDE_DIR=${BOOST_ROOT}/include
 
       - name: Show files
         run: ls -lh wheelhouse
