@@ -100,14 +100,14 @@ jobs:
       #     ./b2 --prefix=${{ github.workspace }}/boost --with-test install
       #   if: steps.cache-boost.outputs.cache-hit != 'true'
 
-      # - name: Install boost for Windows
-      #   uses: MarkusJx/install-boost@v2.1.0
-      #   id: install-boost
-      #   with:
-      #     boost_version: 1.77.0
-      #     platform_version: 2019
-      #     toolset: msvc
-      #   if: runner.os == 'Windows'
+      - name: Install boost for Windows
+        uses: MarkusJx/install-boost@v2.1.0
+        id: install-boost
+        with:
+          boost_version: 1.72.0
+          platform_version: 2019
+          toolset: msvc
+        if: runner.os == 'Windows'
 
       # - name: Install boost for Linux
       #   uses: MarkusJx/install-boost@v2.1.0
@@ -120,12 +120,12 @@ jobs:
       # - name: Get latest CMake and ninja
       #   uses: lukka/get-cmake@latest
 
-      - name: Cache Things
-        id: cache-things
-        uses: actions/cache@v2
-        with:
-          path: things-files
-          key: ${{ runner.os }}-things-v2
+      # - name: Cache Things
+      #   id: cache-things
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: things-files
+      #     key: ${{ runner.os }}-things-v2
 
       - name: Install libraries for Windows
         run: |
