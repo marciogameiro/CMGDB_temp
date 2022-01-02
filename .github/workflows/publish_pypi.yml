@@ -164,8 +164,9 @@ jobs:
           pwd
           # dir D:\a\CMGDB_temp\*
           # dir D:\a\CMGDB_temp\CMGDB_temp\*
-          dir D:\a\CMGDB_temp\CMGDB_temp\boost\boost\foreach.hpp
-          dir D:\a\CMGDB_temp\*
+          # dir D:\a\CMGDB_temp\CMGDB_temp\boost\boost\foreach.hpp
+          # dir D:\a\CMGDB_temp\*
+          dir D:\a\CMGDB_temp\CMGDB_temp\boost\*
           # dir D:\a\CMGDB_temp\CMGDB_temp\src\CMGDB\SaveMorseData.py
         shell: pwsh
         if: runner.os == 'Windows'
@@ -176,8 +177,9 @@ jobs:
           pwd
           # ls -l /home/runner/work/CMGDB_temp/*
           # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/*
-          ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/foreach.hpp
-          ls -l /home/runner/work/CMGDB_temp/*
+          # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/foreach.hpp
+          # ls -l /home/runner/work/CMGDB_temp/*
+          ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/boost/*
           # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/src/CMGDB/SaveMorseData.py
         shell: bash
         if: runner.os == 'Linux'
