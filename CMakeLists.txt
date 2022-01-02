@@ -28,6 +28,8 @@ add_subdirectory(pybind11)
 # endif()
 
 message("BOOST_ROOT IS ${BOOST_ROOT}")
+message("BOOST_INCLUDE IS ${BOOST_INCLUDE}")
+
 find_package(Boost)
 
 

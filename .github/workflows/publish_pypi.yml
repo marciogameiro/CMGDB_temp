@@ -282,6 +282,7 @@ jobs:
           CIBW_BUILD: cp${{ matrix.python }}-*
           CIBW_ARCHS_WINDOWS: auto64
           BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
+          CIBW_ENVIRONMENT: "BOOST_INCLUDE=${BOOST_ROOT}"
 
       - name: Show files
         run: ls -lh wheelhouse
