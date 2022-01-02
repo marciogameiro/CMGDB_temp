@@ -17,21 +17,23 @@ endif(APPLE)
 
 add_subdirectory(pybind11)
 
-# if(UNIX AND NOT APPLE)
+if(UNIX AND NOT APPLE)
   # add_subdirectory(/home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
-  # set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
-# endif()
+  set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
+  set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
+endif()
 
-# if(WINDOWS)
-  # add_subdirectory(D:\a\CMGDB_temp\CMGDB_temp\boost\boost)
-  # set(BOOST_ROOT D:\a\CMGDB_temp\CMGDB_temp\boost\boost)
-# endif()
+if(WIN32)
+  add_subdirectory(D:\a\CMGDB_temp\CMGDB_temp\boost\boost)
+  set(BOOST_ROOT D:\a\CMGDB_temp\CMGDB_temp\boost\boost)
+  set(Boost_INCLUDE_DIR D:\a\CMGDB_temp\CMGDB_temp\boost\boost\inlcude)
+endif()
 
 message("BOOST_ROOT IS ${BOOST_ROOT}")
-message("BOOST_INCLUDE IS ${BOOST_INCLUDE}")
 message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
 
-find_package(Boost)
+find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
+# find_package(Boost)
 
 
 # message("CMAKE_SOURCE_DIR IS ${CMAKE_SOURCE_DIR}")
