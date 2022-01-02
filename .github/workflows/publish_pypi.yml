@@ -192,6 +192,7 @@ jobs:
       - name: Display files info
         run: |
           echo "Printing contents of home folder"
+          echo ${BOOST_ROOT}
           pwd
           # dir D:\a\CMGDB_temp\*
           # dir D:\a\CMGDB_temp\CMGDB_temp\*
@@ -205,6 +206,7 @@ jobs:
       - name: Display files info
         run: |
           echo "Printing contents of home folder"
+          echo ${BOOST_ROOT}
           pwd
           # ls -l /home/runner/work/CMGDB_temp/*
           # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/*
