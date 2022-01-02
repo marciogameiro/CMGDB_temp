@@ -24,9 +24,9 @@ if(UNIX AND NOT APPLE)
 endif()
 
 if(WIN32)
-  add_subdirectory(D:\a\CMGDB_temp\CMGDB_temp\boost\boost)
-  set(BOOST_ROOT D:\a\CMGDB_temp\CMGDB_temp\boost\boost)
-  set(Boost_INCLUDE_DIR D:\a\CMGDB_temp\CMGDB_temp\boost\boost\inlcude)
+  # add_subdirectory(D:/a/CMGDB_temp/CMGDB_temp/boost/boost)
+  set(BOOST_ROOT D:/a/CMGDB_temp/CMGDB_temp/boost/boost)
+  set(Boost_INCLUDE_DIR D:/a/CMGDB_temp/CMGDB_temp/boost/boost/inlcude)
 endif()
 
 message("BOOST_ROOT IS ${BOOST_ROOT}")
