@@ -28,7 +28,7 @@ add_subdirectory(pybind11)
 # endif()
 
 message("BOOST_ROOT IS ${BOOST_ROOT}")
-# find_package(Boost)
+find_package(Boost)
 
 
 # message("CMAKE_SOURCE_DIR IS ${CMAKE_SOURCE_DIR}")

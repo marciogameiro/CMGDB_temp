@@ -75,15 +75,16 @@ jobs:
       #   shell: bash
 
       - name: Cache Boost
-        id: cache-boost
         uses: actions/cache@v2
+        id: cache-boost
         with:
-          path: boost/
-          key: ${{ runner.os }}-boost-1.78
+          path: ${{ github.workspace }}/boost
+          key: ${{ runner.os }}-boost
 
       - name: Download Boost
         run: |
-          wget https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
+          curl -s -L -o boost_1_78_0.zip https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
+          # wget https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
           unzip boost_1_78_0.zip;
         if: steps.cache-boost.outputs.cache-hit != 'true'
 
