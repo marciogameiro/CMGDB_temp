@@ -107,8 +107,8 @@ endif()
 #   ${USER_INCLUDE_PATH} )
 
 include_directories (
-  /usr/local/include
   /usr/include
+  /usr/local/include
   # /usr/share/miniconda3/include
   ${CMAKE_SOURCE_DIR}/include
   ${USER_INCLUDE_PATH}/database
