@@ -112,6 +112,7 @@ jobs:
         id: install-boost-linux
         with:
           boost_version: 1.78.0
+          platform_version: 20.04
         if: runner.os == 'Linux'
 
       - name: Install libraries for Windows
