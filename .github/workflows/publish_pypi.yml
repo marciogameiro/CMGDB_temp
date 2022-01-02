@@ -98,12 +98,20 @@ jobs:
       #     ./b2 --prefix=${{ github.workspace }}/boost --with-test install
       #   if: steps.cache-boost.outputs.cache-hit != 'true'
 
-      - name: Install boost for Linux and windows
-        uses: MarkusJx/install-boost@v2.0.0
+      - name: Install boost for Windows
+        uses: MarkusJx/install-boost@v2.1.0
         id: install-boost
         with:
-          boost_version: 1.77.0
-        if: runner.os == 'Windows' || runner.os == 'Linux'
+          boost_version: 1.78.0
+          toolset: msvc
+        if: runner.os == 'Windows'
+
+      - name: Install boost for Linux
+        uses: MarkusJx/install-boost@v2.1.0
+        id: install-boost
+        with:
+          boost_version: 1.78.0
+        if: runner.os == 'Linux'
 
       - name: Install libraries for Windows
         run: |
