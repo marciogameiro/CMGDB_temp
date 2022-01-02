@@ -23,6 +23,10 @@ add_subdirectory(pybind11)
 #   set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
 # endif()
 
+if(UNIX AND NOT APPLE)
+  set(Boost_INCLUDE_DIR /usr/include/boost)
+endif()
+
 if(WIN32)
   # add_subdirectory(D:/a/CMGDB_temp/CMGDB_temp/boost/boost)
   set(BOOST_ROOT D:/a/CMGDB_temp/CMGDB_temp/boost/boost)
