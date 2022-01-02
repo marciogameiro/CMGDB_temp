@@ -249,6 +249,8 @@ jobs:
           ls -lh /usr/include/boost/version.hpp
           cat /usr/include/boost/version.hpp
           cmake --version
+          cd build
+          ls -lh
         shell: bash
         if: runner.os == 'Linux'
 
@@ -314,8 +316,6 @@ jobs:
 
       - name: Build wheel
         run:
-          cd build
-          ls -lh
           python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD: cp${{ matrix.python }}-*
