@@ -125,7 +125,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: things-files
-          key: ${{ runner.os }}-things
+          key: ${{ runner.os }}-things-v2
 
       - name: Install libraries for Windows
         run: |
