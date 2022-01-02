@@ -24,8 +24,8 @@ add_subdirectory(pybind11)
 # endif()
 
 if(UNIX AND NOT APPLE)
-  # set(Boost_INCLUDE_DIR /usr/include/boost)
-  set(BOOST_INCLUDEDIR /usr/include/boost)
+  set(Boost_INCLUDE_DIR /usr/include/boost)
+  # set(BOOST_INCLUDEDIR /usr/include/boost)
 endif()
 
 if(WIN32)
