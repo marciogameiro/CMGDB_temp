@@ -23,7 +23,8 @@ jobs:
       # Build the other wheels even if one fails
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-18.04, macos-latest]
+        os: [windows-latest]
+        # os: [windows-latest, ubuntu-18.04, macos-latest]
         # os: [windows-latest, ubuntu-latest, macos-latest]
         python: [37] # [36, 37, 38, 39]
 
@@ -98,14 +99,14 @@ jobs:
       #     ./b2 --prefix=${{ github.workspace }}/boost --with-test install
       #   if: steps.cache-boost.outputs.cache-hit != 'true'
 
-      - name: Install boost for Windows
-        uses: MarkusJx/install-boost@v2.1.0
-        id: install-boost
-        with:
-          boost_version: 1.77.0
-          platform_version: 2019
-          toolset: msvc
-        if: runner.os == 'Windows'
+      # - name: Install boost for Windows
+      #   uses: MarkusJx/install-boost@v2.1.0
+      #   id: install-boost
+      #   with:
+      #     boost_version: 1.77.0
+      #     platform_version: 2019
+      #     toolset: msvc
+      #   if: runner.os == 'Windows'
 
       # - name: Install boost for Linux
       #   uses: MarkusJx/install-boost@v2.1.0
@@ -127,9 +128,12 @@ jobs:
           # choco install eigen
           # choco install gmp
           # C:/vcpkg/vcpkg.exe install boost
-          C:/vcpkg/vcpkg.exe install eigen3
-          vcpkg install gmp
+          # C:/vcpkg/vcpkg.exe install eigen3
+          # vcpkg install gmp
           # C:/vcpkg/vcpkg.exe install gmp
+          vcpkg install boost
+          vcpkg install eigen3
+          vcpkg install gmp
         shell: powershell
         # shell: pwsh
         # shell: bash
@@ -179,12 +183,17 @@ jobs:
           # vcpkg/vcpkg install eigen3
           # vcpkg/vcpkg install gmp
           # sudo apt-get install libsdsl3
-          vcpkg install boost
-          vcpkg install eigen3
-          vcpkg install gmp
-          sudo apt-get update
+          # vcpkg install boost
+          # vcpkg install eigen3
+          # vcpkg install gmp
+          # sudo apt-get update
           # sudo apt install libeigen3-dev
           # sudo apt install libgmp-dev
+          # sudo apt-get install libsdsl3
+          sudo apt-get update
+          sudo apt-get install libboost-all-dev
+          sudo apt-get install libeigen3-dev
+          sudo apt-get install libgmp-dev
           sudo apt-get install libsdsl3
         shell: bash
         if: runner.os == 'Linux'
