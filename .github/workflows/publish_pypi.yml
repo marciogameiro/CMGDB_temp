@@ -103,12 +103,13 @@ jobs:
         id: install-boost
         with:
           boost_version: 1.78.0
+          platform_version: 2019
           toolset: msvc
         if: runner.os == 'Windows'
 
       - name: Install boost for Linux
         uses: MarkusJx/install-boost@v2.1.0
-        id: install-boost
+        id: install-boost-linux
         with:
           boost_version: 1.78.0
         if: runner.os == 'Linux'
