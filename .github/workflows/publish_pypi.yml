@@ -120,6 +120,13 @@ jobs:
       # - name: Get latest CMake and ninja
       #   uses: lukka/get-cmake@latest
 
+      - name: Cache Things
+        id: cache-things
+        uses: actions/cache@v2
+        with:
+          path: things-files
+          key: ${{ runner.os }}-things
+
       - name: Install libraries for Windows
         run: |
           # # Activate the base environment
