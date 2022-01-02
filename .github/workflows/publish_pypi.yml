@@ -91,7 +91,7 @@ jobs:
       - name: Setup Boost
         run: |
           cd boost_1_78_0
-          bootstrap
+          ./bootstrap.sh
           b2 --prefix=${{ github.workspace }}/boost --with-test install
         if: steps.cache-boost.outputs.cache-hit != 'true'
 
