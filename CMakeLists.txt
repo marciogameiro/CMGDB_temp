@@ -17,12 +17,23 @@ endif(APPLE)
 
 add_subdirectory(pybind11)
 
+if(UNIX AND NOT APPLE)
+  set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
+endif()
 
-message("CMAKE_SOURCE_DIR IS ${CMAKE_SOURCE_DIR}")
+if(WINDOWS)
+  set(BOOST_ROOT D:\a\CMGDB_temp\CMGDB_temp\boost\boost)
+endif()
 
-set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/boost/boost)
 message("BOOST_ROOT IS ${BOOST_ROOT}")
 find_package(Boost)
+
+
+# message("CMAKE_SOURCE_DIR IS ${CMAKE_SOURCE_DIR}")
+
+# set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/boost/boost)
+# message("BOOST_ROOT IS ${BOOST_ROOT}")
+# find_package(Boost)
 
 
 # set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
@@ -57,14 +68,14 @@ find_package(Boost)
 
 # set(BOOST_INCLUDEDIR /usr/share/miniconda3/include)
 
-set(Boost_INCLUDE_DIR /usr/share/miniconda/include)
-set(Boost_INCLUDE_DIR2 /usr/share/miniconda/include/boost)
+# set(Boost_INCLUDE_DIR /usr/share/miniconda/include)
+# set(Boost_INCLUDE_DIR2 /usr/share/miniconda/include/boost)
 
-if(UNIX AND NOT APPLE)
-  set(BOOST_ROOT /usr/local)
-endif()
+# if(UNIX AND NOT APPLE)
+#   set(BOOST_ROOT /usr/local)
+# endif()
 
-message("BOOST_ROOT IS ${BOOST_ROOT}")
+# message("BOOST_ROOT IS ${BOOST_ROOT}")
 
 # find_package(filesystem REQUIRED CONFIG)
 # find_package(Boost CONFIG)
@@ -75,9 +86,16 @@ if(Boost_FOUND)
   message(STATUS "Success!")
 endif()
 
+# include_directories (
+#   ${Boost_INCLUDE_DIR}
+#   ${Boost_INCLUDE_DIR2}
+#   /usr/local/include
+#   # /usr/share/miniconda3/include
+#   ${CMAKE_SOURCE_DIR}/include
+#   ${USER_INCLUDE_PATH}/database
+#   ${USER_INCLUDE_PATH} )
+
 include_directories (
-  ${Boost_INCLUDE_DIR}
-  ${Boost_INCLUDE_DIR2}
   /usr/local/include
   # /usr/share/miniconda3/include
   ${CMAKE_SOURCE_DIR}/include
@@ -100,7 +118,7 @@ pybind11_add_module(_cmgdb src/CMGDB/_cmgdb/CMGDB.cpp)
 #   boost_wserialization
 #   sdsl )
 
-target_link_libraries ( _cmgdb PRIVATE sdsl )
+target_link_libraries (_cmgdb PRIVATE sdsl)
 
 # target_link_libraries (
 #   _cmgdb PRIVATE
