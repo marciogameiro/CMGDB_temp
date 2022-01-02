@@ -74,29 +74,36 @@ jobs:
       #     rm -rf boost_*/* download.tar.bz2 download.tar
       #   shell: bash
 
-      - name: Cache Boost
-        uses: actions/cache@v2
-        id: cache-boost
+      # - name: Cache Boost
+      #   uses: actions/cache@v2
+      #   id: cache-boost
+      #   with:
+      #     path: ${{ github.workspace }}/boost
+      #     key: ${{ runner.os }}-boost
+
+      # - name: Download Boost
+      #   run: |
+      #     curl -s -L -o boost_1_78_0.7z https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.7z
+      #     # curl -s -L -o boost_1_78_0.zip https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
+      #     # wget https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
+      #     # unzip -q boost_1_78_0.zip;
+      #     7z x boost_1_78_0.7z -y -bd
+      #   if: steps.cache-boost.outputs.cache-hit != 'true'
+
+      # - name: Setup Boost
+      #   run: |
+      #     cd boost_1_78_0
+      #     # ./bootstrap.sh
+      #     bootstrap
+      #     ./b2 --prefix=${{ github.workspace }}/boost --with-test install
+      #   if: steps.cache-boost.outputs.cache-hit != 'true'
+
+      - name: Install boost for Linux and windows
+        uses: MarkusJx/install-boost@v2.0.0
+        id: install-boost
         with:
-          path: ${{ github.workspace }}/boost
-          key: ${{ runner.os }}-boost
-
-      - name: Download Boost
-        run: |
-          curl -s -L -o boost_1_78_0.7z https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.7z
-          # curl -s -L -o boost_1_78_0.zip https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
-          # wget https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
-          # unzip -q boost_1_78_0.zip;
-          7z x boost_1_78_0.7z -y -bd
-        if: steps.cache-boost.outputs.cache-hit != 'true'
-
-      - name: Setup Boost
-        run: |
-          cd boost_1_78_0
-          # ./bootstrap.sh
-          bootstrap
-          ./b2 --prefix=${{ github.workspace }}/boost --with-test install
-        if: steps.cache-boost.outputs.cache-hit != 'true'
+          boost_version: 1.77.0
+        if: runner.os == 'Windows' || runner.os == 'Linux'
 
       - name: Install libraries for Windows
         run: |
@@ -274,6 +281,7 @@ jobs:
         env:
           CIBW_BUILD: cp${{ matrix.python }}-*
           CIBW_ARCHS_WINDOWS: auto64
+          BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
 
       - name: Show files
         run: ls -lh wheelhouse
