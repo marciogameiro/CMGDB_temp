@@ -24,7 +24,8 @@ add_subdirectory(pybind11)
 # endif()
 
 if(UNIX AND NOT APPLE)
-  set(Boost_INCLUDE_DIR /usr/include/boost)
+  # set(Boost_INCLUDE_DIR /usr/include/boost)
+  set(BOOST_INCLUDEDIR /usr/include/boost)
 endif()
 
 if(WIN32)
@@ -37,7 +38,7 @@ message("BOOST_ROOT IS ${BOOST_ROOT}")
 message("Boost_INCLUDE_DIR IS ${Boost_INCLUDE_DIR}")
 
 # find_package(Boost COMPONENTS chrono thread serialization REQUIRED)
-# find_package(Boost)
+find_package(Boost)
 
 
 # message("CMAKE_SOURCE_DIR IS ${CMAKE_SOURCE_DIR}")
