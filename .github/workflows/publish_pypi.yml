@@ -244,6 +244,7 @@ jobs:
           # cat /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost/version.hpp
           # ls -l /home/runner/work/CMGDB_temp/CMGDB_temp/*
           ls -lh /usr/include/boost/version.hpp
+          cat /usr/include/boost/version.hpp
         shell: bash
         if: runner.os == 'Linux'
 
