@@ -117,6 +117,9 @@ jobs:
       #     platform_version: 20.04
       #   if: runner.os == 'Linux'
 
+      - name: Get latest CMake and ninja
+        uses: lukka/get-cmake@latest
+
       - name: Install libraries for Windows
         run: |
           # # Activate the base environment
