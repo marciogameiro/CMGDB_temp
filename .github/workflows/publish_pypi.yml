@@ -104,7 +104,7 @@ jobs:
         uses: MarkusJx/install-boost@v2.1.0
         id: install-boost
         with:
-          boost_version: 1.72.0
+          boost_version: 1.73.0
           platform_version: 2019
           toolset: msvc
         if: runner.os == 'Windows'
