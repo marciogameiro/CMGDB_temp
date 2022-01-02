@@ -201,7 +201,7 @@ jobs:
           # dir D:\a\CMGDB_temp\CMGDB_temp\boost\*
           # dir D:\a\CMGDB_temp\CMGDB_temp\src\CMGDB\SaveMorseData.py
           # dir D:\a\CMGDB_temp\CMGDB_temp\boost\*
-          cat D:/a/CMGDB_temp/CMGDB_temp/boost/boost/inlcude/boost/version.hpp
+          # cat D:/a/CMGDB_temp/CMGDB_temp/boost/boost/inlcude/boost/version.hpp
         shell: pwsh
         if: runner.os == 'Windows'
 
