@@ -152,8 +152,9 @@ jobs:
           # C:/vcpkg/vcpkg.exe install gmp
           #
           # vcpkg install boost
-          vcpkg install eigen3
-          vcpkg install gmp
+          # vcpkg install eigen3
+          # vcpkg install gmp
+          vcpkg install
         shell: powershell
         # shell: pwsh
         # shell: bash
