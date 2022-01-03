@@ -237,7 +237,7 @@ jobs:
       - name: Display files info
         run: |
           echo "Printing contents of home folder"
-          # echo ${{steps.install-boost.outputs.BOOST_ROOT}}
+          echo ${{steps.install-boost.outputs.BOOST_ROOT}}
           # pwd
           # dir D:\a\CMGDB_temp\*
           # dir D:\a\CMGDB_temp\CMGDB_temp\*
@@ -247,7 +247,7 @@ jobs:
           # dir D:\a\CMGDB_temp\CMGDB_temp\src\CMGDB\SaveMorseData.py
           # dir D:\a\CMGDB_temp\CMGDB_temp\boost\*
           # cat D:/a/CMGDB_temp/CMGDB_temp/boost/boost/inlcude/boost/version.hpp
-          cat D:/a/CMGDB_temp/CMGDB_temp/boost/boost/inlcude/boost/version.hpp
+          # cat D:/a/CMGDB_temp/CMGDB_temp/boost/boost/inlcude/boost/version.hpp
         shell: pwsh
         if: runner.os == 'Windows'
 

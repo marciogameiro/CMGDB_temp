@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 project(CMGDB)
 
 cmake_policy(SET CMP0054 NEW)
+cmake_policy(SET CMP0127 NEW)
 
 # Visual Studio C++ does not support keywords such
 # as "and", "not", etc. Settting the /permissive-
@@ -23,10 +24,10 @@ if(UNIX AND NOT APPLE)
   set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
 endif()
 
-if(UNIX AND NOT APPLE)
-  set(Boost_INCLUDE_DIR /usr/include)
+# if(UNIX AND NOT APPLE)
+  # set(Boost_INCLUDE_DIR /usr/include)
   # set(BOOST_INCLUDEDIR /usr/include/boost)
-endif()
+# endif()
 
 if(WIN32)
   # add_subdirectory(D:/a/CMGDB_temp/CMGDB_temp/boost/boost)
