@@ -17,11 +17,11 @@ endif(APPLE)
 
 add_subdirectory(pybind11)
 
-# if(UNIX AND NOT APPLE)
+if(UNIX AND NOT APPLE)
 #   # add_subdirectory(/home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
-#   set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
-#   set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
-# endif()
+  set(BOOST_ROOT /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost)
+  set(Boost_INCLUDE_DIR /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include)
+endif()
 
 if(UNIX AND NOT APPLE)
   set(Boost_INCLUDE_DIR /usr/include)
