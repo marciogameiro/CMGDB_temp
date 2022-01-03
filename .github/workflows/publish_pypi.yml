@@ -154,7 +154,9 @@ jobs:
           # vcpkg install boost
           # vcpkg install eigen3
           # vcpkg install gmp
-          vcpkg install
+          # vcpkg install
+          choco install eigen
+          choco install gmp
         shell: powershell
         # shell: pwsh
         # shell: bash
