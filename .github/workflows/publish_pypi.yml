@@ -23,8 +23,8 @@ jobs:
       # Build the other wheels even if one fails
       fail-fast: false
       matrix:
-        # os: [ubuntu-latest]
-        os: [windows-latest]
+        os: [ubuntu-latest]
+        # os: [windows-latest]
         # os: [windows-latest, ubuntu-18.04, macos-latest]
         # os: [windows-latest, ubuntu-latest, macos-latest]
         python: [37] # [36, 37, 38, 39]
@@ -108,7 +108,7 @@ jobs:
       #     ./b2 --prefix=${{ github.workspace }}/boost --with-test install
       #   if: steps.cache-boost.outputs.cache-hit != 'true'
 
-      - name: Install boost for Windows
+      - name: Install boost on Windows
         uses: MarkusJx/install-boost@v2.1.0
         id: install-boost
         with:
@@ -117,13 +117,13 @@ jobs:
           toolset: msvc
         if: runner.os == 'Windows'
 
-      # - name: Install boost for Linux
-      #   uses: MarkusJx/install-boost@v2.1.0
-      #   id: install-boost-linux
-      #   with:
-      #     boost_version: 1.77.0
-      #     platform_version: 20.04
-      #   if: runner.os == 'Linux'
+      - name: Install boost on Linux
+        uses: MarkusJx/install-boost@v2.1.0
+        id: install-boost-linux
+        with:
+          boost_version: 1.78.0
+          platform_version: 20.04
+        if: runner.os == 'Linux'
 
       # - name: Get latest CMake and ninja
       #   uses: lukka/get-cmake@latest
@@ -214,7 +214,7 @@ jobs:
           # sudo apt install libgmp-dev
           # sudo apt-get install libsdsl3
           sudo apt-get update
-          sudo apt-get install libboost-dev
+          # sudo apt-get install libboost-dev
           sudo apt-get install libeigen3-dev
           sudo apt-get install libgmp-dev
           sudo apt-get install libsdsl3
