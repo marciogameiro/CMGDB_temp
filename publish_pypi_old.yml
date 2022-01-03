@@ -1,0 +1,249 @@
+# Build and publish Python distribution package to TestPyPI and PyPI
+name: Build and publish wheels
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v* # Push events to v* tags
+  # pull_request:
+  #   branches:
+  #     - master
+  # Manual run
+  workflow_dispatch:
+
+jobs:
+  # Build wheels for macOS, Linux, and Windows
+  build_wheels:
+    name: Wheel for ${{ matrix.os }}-cp${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      # Build the other wheels even if one fails
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-18.04, macos-latest]
+        # os: [windows-latest, ubuntu-latest, macos-latest]
+        python: [37] # [36, 37, 38, 39]
+
+    steps:
+      # - name: Install boost
+      #   uses: MarkusJx/install-boost@v2.0.0
+      #   id: install-boost
+      #   with:
+      #     boost_version: 1.71.0
+      #   if: runner.os == 'Windows'
+
+      - name: Set up conda environment on Windows
+        run: |
+          # Set up base environment
+          C:\Miniconda\condabin\conda.bat env update --name base
+          C:\Miniconda\condabin\conda.bat init powershell
+        if: runner.os == 'Windows'
+
+      - name: Install libraries for Windows
+        run: |
+          # Activate the base environment
+          C:\Miniconda\condabin\conda.bat activate base
+          C:\Miniconda\condabin\conda.bat install -c conda-forge boost
+          C:\Miniconda\condabin\conda.bat install -c conda-forge eigen
+          C:\Miniconda\condabin\conda.bat install -c salilab gmp
+          # conda install -c conda-forge sdsl-lite
+        shell: powershell
+        # shell: pwsh
+        # shell: bash
+        if: runner.os == 'Windows'
+
+      - name: Install the SDSL library
+        run: |
+          git clone https://github.com/simongog/sdsl-lite.git
+          cd sdsl-lite
+          ./install.sh
+        shell: powershell
+        # shell: pwsh
+        # shell: bash
+        if: runner.os == 'Windows'
+
+      # - name: Set up conda environment
+      #   uses: conda-incubator/setup-miniconda@v2
+      #   with:
+      #     miniconda-version: "latest"
+      #     auto-update-conda: true
+      #     # auto-activate-base: true
+      #     # activate-environment: ""
+      #     activate-environment: conda-env
+      #     # python-version: ${{ matrix.python }}
+      #   if: runner.os == 'Windows' || runner.os == 'Linux'
+
+      - name: Add conda to system path
+        run: |
+          # $CONDA is an environment variable pointing to the
+          # root of the miniconda directory
+          echo $CONDA/bin >> $GITHUB_PATH
+        if: runner.os == 'Linux'
+
+      - name: Install libraries for Linux
+        run: |
+          conda update conda
+          conda install -c conda-forge boost
+          conda install -c conda-forge eigen
+          conda install -c anaconda gmp
+          conda install -c conda-forge sdsl-lite
+          # sudo apt-get update
+          # sudo apt-get install libboost-all-dev
+          # sudo apt install libeigen3-dev
+          # sudo apt install libgmp-dev
+          # sudo apt-get install libsdsl3
+        shell: bash
+        if: runner.os == 'Linux'
+
+      - name: Install libraries for macOS
+        run: |
+          brew upgrade
+          brew install boost
+          brew install eigen
+          brew install gmp
+          brew tap Brewsci/bio
+          brew install sdsl-lite
+        shell: bash
+        if: runner.os == 'macOS'
+
+      - name: Set environment variable(s)
+        run: |
+          echo "Hello there!"
+          dir C:\Miniconda
+          echo "Hello there 2!"
+          dir C:\Miniconda\pkgs
+          echo "Hello there 3!"
+          C:\Miniconda\condabin\conda.bat list
+          echo "Hello there 4!"
+          C:\Miniconda\condabin\conda.bat info boost
+          echo "Hello there 5!"
+          C:\Miniconda\condabin\conda.bat info gmp
+          # echo "Hello there 2!"
+          # dir C:\Miniconda\envs\base\include
+        shell: pwsh
+        # shell: bash
+        if: runner.os == 'Windows'
+
+      - name: Set environment variable(s)
+        run: |
+          echo "Hello there 0!"
+          sudo chmod uog+rw /usr/share/miniconda/include/boost/*
+          echo "Hello there!"
+          ls -lh /usr/share/miniconda/include/boost/version.hpp
+          echo "Hello there 2!"
+          ls -lh /usr/share/miniconda/include
+          # echo "Hello there 3!"
+          # ls -lh /usr/share/miniconda3/lib/libboost*
+        shell: bash
+        if: runner.os == 'Linux'
+
+      # - name: Set environment variable(s)
+      #   run: |
+      #     echo "Hello there!"
+      #     ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost
+      #     echo "Hello there 2!"
+      #     ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include
+      #     echo "Hello there 3!"
+      #     ls -lh /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost
+      #     echo "Hello there 4!"
+      #     cat /home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost/include/boost/version.hpp
+      #     echo "${{ steps.install-boost.outputs.BOOST_ROOT }}"
+      #     echo ${{ steps.install-boost.outputs.BOOST_ROOT }}
+      #     # export BOOST_ROOT="/home/runner/work/CMGDB_temp/CMGDB_temp/boost/boost"
+      #     # export BOOST_ROOT="${{ steps.install-boost.outputs.BOOST_ROOT }}"
+      #     # echo "::set-env name=BOOST_ROOT::${{ steps.install-boost.outputs.BOOST_ROOT }}"
+      #     # echo "::set-env name=Boost_INCLUDE_DIR::${{ steps.install-boost.outputs.BOOST_ROOT }}/include"
+      #   shell: bash
+
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+
+      - name: Install cibuildwheel
+        run: python -m pip install cibuildwheel
+
+      - name: Build wheel
+        run:
+          python -m cibuildwheel --output-dir wheelhouse
+        env:
+          CIBW_BUILD: cp${{ matrix.python }}-*
+          CIBW_ARCHS_WINDOWS: auto64
+
+      - name: Show files
+        run: ls -lh wheelhouse
+        shell: bash
+
+      - name: Verify clean directory
+        run: git diff --exit-code
+        shell: bash
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: wheelhouse/*.whl
+
+  # Build source distribution on Linux
+  build_sdist:
+    name: Build SDist
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository and submodules
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+
+    - name: Install dependencies
+      run: python -m pip install setuptools twine
+
+    - name: Build source tarball
+      run: python setup.py sdist
+
+    - name: Check metadata
+      run: twine check dist/*.tar.gz
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        path: dist/*.tar.gz
+
+  # Upload the wheels and the source distribution
+  upload_pypi:
+    name: Upload to TestPyPI and PyPI
+    needs: [build_wheels, build_sdist]
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v2
+
+    - name: Download artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: artifact
+        path: dist
+
+    - name: Publish package to TestPyPI
+      uses: pypa/gh-action-pypi-publish@v1.4.1
+      with:
+        user: __token__
+        password: ${{ secrets.TEST_PYPI_TOKEN }}
+        repository_url: https://test.pypi.org/legacy/
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+
+    - name: Publish package to PyPI
+      uses: pypa/gh-action-pypi-publish@v1.4.1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_TOKEN }}
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')

@@ -23,8 +23,8 @@ jobs:
       # Build the other wheels even if one fails
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        # os: [windows-latest]
+        # os: [ubuntu-latest]
+        os: [windows-latest]
         # os: [windows-latest, ubuntu-18.04, macos-latest]
         # os: [windows-latest, ubuntu-latest, macos-latest]
         python: [37] # [36, 37, 38, 39]
@@ -155,8 +155,9 @@ jobs:
           # vcpkg install eigen3
           # vcpkg install gmp
           # vcpkg install
-          choco install eigen
-          choco install gmp
+          C:/vcpkg/vcpkg.exe install eigen3
+          C:/vcpkg/vcpkg.exe install gmp
+          # ./vcpkg install gmp
         shell: powershell
         # shell: pwsh
         # shell: bash
